@@ -1,0 +1,18 @@
+......JavaScript Code.......
+$('.qrcode').each(function(){
+var qrcode = new QRCode($(this).attr('id'),{
+text:$(this).attr('data-qrcode'),
+width:65,
+height:65,
+colorDark:"#000000",
+colorLight:"#ffffff",
+correctLevel:QRCode.CorrectLevel.H
+});
+});
+
+......HTML.........
+<div id="qr_#PRODUCT_ID#" class="qrcode" data-qrcode="QR#PRODUCT_ID#"></div>
+
+
+......JavaScript File URLs.......
+#APP_IMAGES#qrcode.min.js
