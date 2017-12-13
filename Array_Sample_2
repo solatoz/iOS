@@ -1,0 +1,136 @@
+/
+//  TableViewControllerPrinciples.swift
+//  US Citizenship Test
+//
+//  Created by Jong Kim on 7/2/17.
+//  Copyright © 2017 Jong Kim. All rights reserved.
+//
+
+import UIKit
+import GoogleMobileAds
+
+
+var engQuestions = ["1. What is the supreme law of the land?", "2. What does the Constitution do?",
+                   "3. The idea of self-government is in the first three words of the Constitution. What are these words?",
+                   "4. What is an amendment?", "5. What do we call the first ten amendments to the Constitution?", "6. What is one right or freedom from the First Amendment?*",
+                   "7. How many amendments does the Constitution have?", "8. What did the Declaration of Independence do?"
+    , "9. What are two rights in the Declaration of Independence?", "10. What is freedom of religion?", "11. What is the economic system in the United States?*",
+"12. What is the 'rule of law'?" ]
+var korQuestions = ["국가의 최고의 법은 무엇인가?", "헌법이 하는 기능은 무엇인가?", "자치제의 개념은 헌법의 첫 세 단어에 들어있다. 이 단어들은 무엇인가?",
+                    "수정안이란 무엇인가?", "1차 헌법 수정 10개 조항을 무엇이라고 부르는가?", "1차 헌법 수정안에 있는 권리나 자유 중 한 가지는 무엇인가?*",
+                    "헌법에는 얼마나 많은 수정안이 있는가?", "독립 선언은 무엇을 한 것인가?", "독립 선언에 있는 권리들 중 두 가지는 무엇인가?",
+                    "종교의 자유란 무엇인가?", "미국의 경제 체제는 무엇인가?*", "“법의 지배”란 무엇인가?"]
+var engAnswers = ["▪ the Constitution",
+                  "▪ sets up the government ▪ defines the government ▪ protects basic rights of Americans",
+                  "▪ We the People",
+                  "▪ a change (to the Constitution) ▪ an addition (to the Constitution)",
+                  "▪ the Bill of Rights",
+                  "▪ speech ▪ religion ▪ assembly ▪ press ▪ petition the government",
+                  "▪ twenty-seven (27)",
+                  "▪ announced our independence (from Great Britain) ▪ declared our independence (from Great Britain) ▪ said that the United States is free (from Great Britain)",
+                  "▪ life ▪ liberty ▪ pursuit of happiness",
+                  "▪ You can practice any religion, or not practice a religion.",
+                  "▪ capitalist economy ▪ market economy",
+                  "▪ Everyone must follow the law. ▪ Leaders must obey the law. ▪ Government must obey the law. ▪ No one is above the law."]
+var korAnswers = ["▪ 헌법", "▪ 정부 조직 구성 ▪ 정부 범위의 규정 ▪ 미국인의 기본권 보호 ",
+                  "▪ 우리 국민", "▪ (헌법에 대한) 변경사항 ▪ (헌법에 대한) 추가조항",
+                  "▪ 권리 장전", "▪ 언론 ▪ 종교 ▪ 집회 ▪ 출판 ▪ 정부에 청원",
+                  "▪ 27 (27개)", "▪ (영국으로 부터의) 독립을 알림 ▪ (영국으로 부터의) 독립을 선언함 ▪ 미국이 (영국으로부터) 자유롭다는 것을 밝힘",
+                  "▪ 생명 ▪ 자유 ▪ 행복 추구", "▪ 어떤 종교 생활을 하거나, 하지 않을 수 있다.",
+                  "▪ 자본주의 경제 체제 ▪ 시장 경제 체제",
+"▪ 모든 사람은 법을 따라야 한다. ▪ 지도자들은 법을 준수해야 한다. ▪ 정부는 법을 준수해야 한다. ▪ 어느 누구도 법에 우선하지 않는다."]
+var position = ["track01", "track02", "track03", "track04", "track05", "track06", "track07", "track08", "track09", "track10", "track11", "track12"]
+var myIndex = 0
+
+class TableViewControllerPrinciples: UITableViewController, GADBannerViewDelegate {
+    
+    @IBOutlet weak var myBannerPrinciples: GADBannerView!
+    
+
+        // Do any additional setup after loading the view.
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let requestPrinciples = GADRequest()
+        requestPrinciples.testDevices = [kGADSimulatorID]
+        
+        myBannerPrinciples.adUnitID = "ca-app-pub-9694785024815308/1409737831"
+        
+        myBannerPrinciples.rootViewController = self
+        myBannerPrinciples.delegate = self
+        myBannerPrinciples.load(requestPrinciples)
+    }
+
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return engQuestions.count
+    }
+
+   
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellPrinciples", for: indexPath)
+        cell.textLabel?.text = engQuestions[indexPath.row]
+        cell.detailTextLabel?.text = korQuestions[indexPath.row]
+      
+
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "seguePrinciples", sender: self)
+    }
+   
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
