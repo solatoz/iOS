@@ -1,0 +1,189 @@
+//
+//  TableViewControllerTypeA.swift
+//  CADriverLicence
+//
+//  Created by Jong Kim on 7/17/17.
+//  Copyright © 2017 Jong Kim. All rights reserved.
+//
+
+import UIKit
+import GoogleMobileAds
+
+
+var questionsTypeA = [
+"◆ 다른차량을 추월하기 위해 포정도로를 벗어날수 있나? "," ◆ 차량을 매매할 때에는 5일 이내에 어디로 보고해야 한다","◆ 좌회전을 할 때 항상 모터 사이클이 있는지 잘 살펴보아야 하는 이유는?",
+"◆ 어떤경우 모퉁이에 서있는 보행자는 우선권을 가지는가? ",
+"◆ 빨간불일 때 경관이 통과하라고 지시하면? ",
+"◆ 불가피하게 안개 속에서 운전을 해야한다면?",
+"◆ 프리웨이에서 차선을 변경하기 전에 최소한 몇초간 깜빡이를 켜야하는가?",
+"◆ 이 곳에서는 절대로 주차해서는 안된다.",
+"◆ 각 방향 2차선 도로에서 U자형 회전을 하고자 한다. 어디서 시작해야 하는가?" ,
+"◆ 주위에 차량이 보이지 않을때에 왜 깜빡이 등을 켜야 하는가? ",
+"◆ 프리웨이 진입할 때는 다음의 속도로 운전한다. ",
+"◆ 파란색 보도 경계선의 의미는? ",
+"◆ 언제 차간 거리를 넓혀야 되는가? ",
+"◆ 주차등만을 사용해 운전할 수 있는 때는?",
+"◆ 차선을 변경하기 전에 할일은? ",
+"◆ 다른 지시사항이 없는한 상업지구에서의 제한 속도는?",
+"◆ 회전을 하기 전 마지막 _______피트까지는 회전을 한다는 신호를 주어야 한다.",
+"◆ 고속도로는 이 때 가장 미끄럽다.",
+"◆ 방어운전 의미는 ?",
+"◆ 교통사고에 관련되어 사망자가 발생했을 때 어떻게 해야하나? ",
+"◆ 멈춤 표지판이 있는 교차로에서 우선 멈추어야 할 곳은? ",
+"◆ 이중 주차에 대한 올바른 설명은?",
+"◆ 보도 경계선에 평행 주차를 했다. 바퀴는 그 보도 경계선과 몇 인치 이내에? ",
+"◆ 어떠한 환경에서는 픽업 트럭의 뒤에 사람이 탈 수 있는가?",
+"◆ 전방에 사고가 난것을 발견하고 도움을 주려할 때 차는 어디에 멈추어야하나? ",
+"◆ 21세 이상의 운전자에게 적용되는 법적 최대 혈중알콜농도치는? ",
+"◆ 경계선이 없는 오르막길에 주차하려면 앞바퀴는 어느 쪽으로 향해야하나?",
+"◆ 우회전을 할때 오는쪽 차선에서 시작하여 다음 차선에서 끝난다.",
+"◆ 왼쪽에 있는 운전자와 동시에 교차로에 도착했을 때 누가 우선인가? ",
+"◆ 우회전을 하기 위해 자전거 전용 차선으로 들어갈 수 있는 것은 언제인가? ",
+"◆ 철도레일에서 기차가 오고 있다는 빨간색 경고등이 깜빡인다. 어떻게 해야하나? ",
+"◆ 차안에 열린 상태의 알콜병을 소지한 채로 운전하는 것은 위법인가? ",
+"◆ 묵시적 동의법이란 혈중 알콜농도검사에 동의한다는 말이다.언제 적용되는가?",
+"◆ 다른 차를 추월하기위해 내 차선을 떠난후 언제 다시 돌아갈 수 있는 여유가 있는가?",
+"◆ 주위에 다른 차량이 보이지 않아도 왜 신호등을 켜야하나? ",
+"◆ 언제 헤드라이트를 켜야하는가? ",
+"◆ 고속도로에서 타이어가 펑크가 났을때 어디에 차를 멈추어야 하나? ", "◆ 전방의 학교버스가 빨간색 등을 깜빡이고 있을때는?",
+"◆ 차선변경을 하고싶다. 차선이 비어있는지 확인하고 싶을때 취하는 행동은?"
+]
+
+var answersTypeA = ["→ 어떠한 경우에도 안된다.",
+    " → 차량을 매매할 때에는 5일 이내에  DMV로 보고해야 한다.",
+    "→ 차체가 작기 때문에 잘 보기가 힘들기 때문이다",
+    "→ 횡단보도의 표시 유무에 상관없음",
+    "→ 경관이 지시하는 대로 따른다.",
+    "→ 헤드라이트를 켠다.",
+    "→ 5초 ",
+    "→ X가 표시된 공간, No Parking 싸인 ",
+    "→ 왼쪽 차선 ",
+    "→ 미처 보지 못한 차량과 충돌할 수 있기 때문이다",
+    "→ 프리웨이 주행 차량과 동일한 속도",
+    "→ 플래카드를 소지한 신체부자유자를 위한 공간",
+    "→ 뒤를 바싹 따라오는 차량이 있을 경우",
+    "→ 어떠한 상황에서도 허락되지 않는다.",
+    "→ 어깨너머를 바라보며 상황을 본다.",
+    "→ 시속 25 마일 ",
+    "→ 100 피트",
+    "→ 건조한 후 비가 내리기 시작할 때",
+    "→ 눈으로 계속 살피면서 사고에 대해 조심하며 운전할때",
+    "→ DMV에 진술보고서(SRT1)을 제츌한다.",
+    "→ 횡단보도앞 라인",
+    "→ 어떠한 상황에서도 법규위반이다.",
+    "→ 18인치 이내",
+    "→ 트럭의 뒤에 안전벨트가 설치되었을 때",
+    "→ 사고현장을 지나서",
+    "→ 1 퍼센트의 10분의 8 (0.08%) BAC",
+    "→  도로쪽을 향하여",
+    "→  보도 경계선에 가장 가까운 차선",
+    "→  내가 먼저간다",
+    "→  회전하기 전 200피트 이내 지점",
+    "→  멈춘다. 그런 후 안전할때 재출발한다.",
+    "→  위법이다. 예외가 없다.",
+    "→  CALIFORNIA 주 내에서 운전을 할 경우",
+    "→  백밀러를 통해서 그 차량의 앞머리를 볼 수 있을때",
+    "→  미처 보지못한 차량이 받을 수 있기 때문이다.",
+    "→  항상 다른 차량을 보기 힘든 경우",
+    "→  비포장 도로/보도//갓길",
+    "→  빨간색 등이 깜빡이는 한 계속 정지해 있는다.",
+"→  머리를 돌려서 진입하길 원하는 차선을 확인하고 변경한다."]
+var myIndexTypeA = 0
+
+class TableViewControllerTypeA: UITableViewController, GADBannerViewDelegate {
+
+    @IBOutlet weak var bannerTypeA: GADBannerView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let requestTypeA = GADRequest()
+        requestTypeA.testDevices = [kGADSimulatorID]
+        
+        // Set up ad
+        bannerTypeA.adUnitID = "ca-app-pub-9694785024815308/9016765119"
+        bannerTypeA.rootViewController = self
+        bannerTypeA.delegate = self
+        bannerTypeA.load(requestTypeA)
+
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return questionsTypeA.count
+    }
+
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellTypeA = tableView.dequeueReusableCell(withIdentifier: "cellTypeA", for: indexPath)
+        cellTypeA.textLabel?.text = questionsTypeA[indexPath.row]
+
+        // Configure the cell...
+
+        return cellTypeA
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndexTypeA = indexPath.row
+        performSegue(withIdentifier: "segueTypeA", sender: self)
+    }
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
